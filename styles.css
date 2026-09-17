@@ -1270,16 +1270,21 @@ input:focus, select:focus, textarea:focus {
   opacity: 1;
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN (CROSS-DEVICE & MOBILE LAYOUT OPTIMIZATION) */
 @media (max-width: 1100px) {
+  .container {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
   .hero-editorial-grid, .about-monograph-grid, .cta-split-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
   }
 
   .showcase-item, .showcase-item-reverse {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.25rem;
   }
 
   .showcase-item-reverse .showcase-img-wrap {
@@ -1290,30 +1295,46 @@ input:focus, select:focus, textarea:focus {
     order: 2;
   }
 
-  .capability-row {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-
-  .cap-col-spec {
-    text-align: left;
-  }
-
   .footer-editorial-container {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
+  .capability-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    padding: 1.75rem 0.75rem;
+  }
+
+  .cap-col-spec {
+    text-align: left;
+    color: var(--accent-bronze);
+    margin-top: 0.2rem;
+  }
+
   .partners-logo-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    gap: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .nav-menu, .nav-actions .btn {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .navbar-container {
+    height: 68px;
+  }
+
+  .navbar.scrolled .navbar-container {
+    height: 62px;
+  }
+
+  .nav-menu, .nav-actions .btn-nav {
     display: none;
   }
 
@@ -1321,37 +1342,224 @@ input:focus, select:focus, textarea:focus {
     display: flex;
   }
 
+  /* HERO MOBILE REFINEMENTS */
   .hero-editorial {
-    padding: 3.5rem 0 4.5rem;
+    padding: 2.75rem 0 3.5rem;
+  }
+
+  .hero-editorial-grid {
+    gap: 2.25rem;
+  }
+
+  .hero-editorial-meta {
+    margin-bottom: 1.25rem;
   }
 
   .hero-editorial-title {
-    font-size: 2.75rem;
+    font-size: clamp(2.1rem, 7.5vw, 3.1rem);
+    line-height: 1.06;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-editorial-lead {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+  }
+
+  .editorial-main-img {
+    height: 280px;
+  }
+
+  .hero-technical-strip {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
   }
 
   .hero-strip-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 0.85rem;
+  }
+
+  .strip-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem 1rem;
+    border-left: 2px solid var(--accent-bronze);
+  }
+
+  /* SECTIONS MOBILE REFINEMENTS */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-rule {
+    margin-bottom: 2.25rem;
+  }
+
+  .monograph-heading {
+    font-size: clamp(1.75rem, 6vw, 2.35rem);
+    line-height: 1.15;
+    margin-bottom: 0.85rem;
+  }
+
+  .monograph-subtext {
+    font-size: 0.98rem;
+  }
+
+  /* ABOUT SECTION MOBILE */
+  .about-monograph-grid {
+    gap: 2.25rem;
+  }
+
+  .about-monograph-lead {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-monograph-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .editorial-photo {
+    height: 280px;
+  }
+
+  /* CATALOGUE SHOWCASE MOBILE */
+  .catalogue-intro {
+    margin-bottom: 2.25rem;
+  }
+
+  .catalogue-showcase-list {
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .showcase-item, .showcase-item-reverse {
+    padding-bottom: 3rem;
+    gap: 1.5rem;
   }
 
   .showcase-img-wrap {
-    height: 250px;
+    height: 230px;
   }
 
-  .product-modal-body {
-    grid-template-columns: 1fr;
+  .showcase-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
   }
-}
 
-@media (max-width: 640px) {
+  .showcase-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+
+  .showcase-specs {
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .showcase-specs span {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* PARTNERS SECTION MOBILE */
+  .partners-header {
+    margin-bottom: 2.25rem;
+  }
+
   .partners-logo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
   .partner-logo-item {
     height: 75px;
-    padding: 0.75rem;
+    padding: 0.6rem;
+  }
+
+  /* CTA SECTION MOBILE */
+  .cta-split-container {
+    gap: 2.25rem;
+  }
+
+  .cta-split-visual {
+    height: 240px;
+  }
+
+  .cta-split-action {
+    margin-top: 1.5rem;
+  }
+
+  /* FOOTER MOBILE */
+  .editorial-footer {
+    padding-top: 3rem;
+  }
+
+  .footer-editorial-container {
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* MODALS MOBILE REFINEMENTS */
+  .modal-overlay {
+    padding: 0.85rem;
+  }
+
+  .modal-container {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .modal-header {
+    padding: 1.25rem;
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS auto-zoom on input focus */
+    padding: 0.75rem 0.85rem;
+  }
+
+  .product-modal-body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .product-modal-img-wrap {
+    height: 210px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-editorial-cta .btn,
+  .about-monograph-cta .btn,
+  .cta-split-action .btn,
+  .catalogue-footer-cta .btn {
+    width: 100%;
+  }
+
+  .partners-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .partner-logo-item {
+    height: 68px;
+    padding: 0.5rem;
   }
 }
 
